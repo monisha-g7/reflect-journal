@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-sage-800 bg-sand-50;
+    background-image: 
+      radial-gradient(ellipse at 20% 20%, rgba(163, 178, 163, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(206, 199, 216, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(211, 186, 165, 0.05) 0%, transparent 70%);
+    min-height: 100vh;
+  }
+
+  ::selection {
+    @apply bg-sage-200 text-sage-900;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/50 shadow-soft;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-sage-500 text-white rounded-2xl font-medium 
+           transition-all duration-300 hover:bg-sage-600 hover:shadow-lg
+           active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-sand-100 text-sage-700 rounded-2xl font-medium 
+           transition-all duration-300 hover:bg-sand-200 
+           active:scale-[0.98] border border-sand-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 bg-white/50 border border-sand-200 rounded-xl
+           font-body text-sage-800 placeholder:text-sage-400
+           focus:outline-none focus:ring-2 focus:ring-sage-300/50 focus:border-sage-300
+           transition-all duration-300;
+  }
+
+  .textarea-field {
+    @apply w-full px-5 py-4 bg-white/50 border border-sand-200 rounded-2xl
+           font-body text-sage-800 placeholder:text-sage-400 resize-none
+           focus:outline-none focus:ring-2 focus:ring-sage-300/50 focus:border-sage-300
+           transition-all duration-300 leading-relaxed;
+  }
+
+  .mood-btn {
+    @apply w-14 h-14 rounded-2xl flex items-center justify-center text-2xl
+           transition-all duration-300 hover:scale-110 active:scale-95
+           border-2 border-transparent;
+  }
+
+  .mood-btn.selected {
+    @apply border-sage-400 bg-sage-50 shadow-lg scale-110;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-sage-600
+           transition-all duration-300 hover:bg-sage-50 hover:text-sage-800;
+  }
+
+  .nav-link.active {
+    @apply bg-sage-100 text-sage-800 font-medium;
+  }
+
+  .stat-card {
+    @apply glass-card rounded-3xl p-6 transition-all duration-300 hover:shadow-glow;
+  }
+
+  .entry-card {
+    @apply glass-card rounded-2xl p-5 cursor-pointer 
+           transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-sage-300/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-sage-400/50;
+}
+
+/* Text area auto-grow animation */
+.journal-textarea {
+  min-height: 200px;
+  transition: height 0.2s ease;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-gradient-to-r from-sage-600 via-dusk-500 to-clay-500 bg-clip-text text-transparent;
+}
+
+/* Floating shapes background */
+.floating-shapes {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.floating-shapes::before,
+.floating-shapes::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  animation: float 20s ease-in-out infinite;
+}
+
+.floating-shapes::before {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(163, 178, 163, 0.1) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+}
+
+.floating-shapes::after {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(206, 199, 216, 0.1) 0%, transparent 70%);
+  bottom: -50px;
+  left: -50px;
+  animation-delay: -10s;
+}

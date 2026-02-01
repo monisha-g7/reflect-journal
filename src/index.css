@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    color: #353f35;
+    background-color: #fefdfb;
+    background-image: 
+      radial-gradient(ellipse at 20% 20%, rgba(163, 178, 163, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(206, 199, 216, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(211, 186, 165, 0.05) 0%, transparent 70%);
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: #c7d0c7;
+    color: #2d352d;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  .btn-primary {
+    padding: 0.75rem 1.5rem;
+    background-color: #617461;
+    color: white;
+    border-radius: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #4c5c4c;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    background-color: #fdf9f3;
+    color: #3f4b3f;
+    border-radius: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid #f9f1e4;
+  }
+
+  .btn-secondary:hover {
+    background-color: #f9f1e4;
+  }
+
+  .textarea-field {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #f9f1e4;
+    border-radius: 1rem;
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    color: #353f35;
+    resize: none;
+    transition: all 0.3s ease;
+    line-height: 1.625;
+  }
+
+  .textarea-field::placeholder {
+    color: #7d917d;
+  }
+
+  .textarea-field:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(163, 178, 163, 0.3);
+    border-color: #a3b2a3;
+  }
+
+  .mood-btn {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .mood-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .mood-btn.selected {
+    border-color: #7d917d;
+    background-color: #f6f7f6;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    color: #617461;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background-color: #f6f7f6;
+    color: #353f35;
+  }
+
+  .nav-link.active {
+    background-color: #e3e7e3;
+    color: #353f35;
+    font-weight: 500;
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .entry-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .entry-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+.animate-slide-up { animation: slideUp 0.5s ease-out forwards; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-pulse-soft { animation: pulseSoft 4s ease-in-out infinite; }
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
